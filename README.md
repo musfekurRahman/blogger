@@ -16,12 +16,9 @@ Welcome to the Laravel Blog Project! This project is a personal blogging platfor
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
 - [Usage](#usage)
-- [Running Tests](#running-tests)
 - [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
+
 
 ## Features
 
@@ -59,3 +56,33 @@ Ensure you have the following installed:
    ```bash
    git clone https://github.com/musfekurRahman/blogger.git
    cd blogger
+   ```
+
+## Usage
+
+### Writing Posts
+- Navigate to the "Create Post" section.
+- Use the Markdown editor to write your post.
+- Add tags to categorize your post.
+- Publish the post to make it live.
+### Managing Posts
+- Edit: Navigate to your post and click "Edit" to update the content.
+- Delete: Navigate to your post and click "Delete" to remove it.
+### Comments
+- Users can leave comments on posts.
+- Admins can moderate comments through the dashboard.
+
+## Deployment
+To deploy the project, follow these steps:
+
+1. Ensure all environment variables are set up for the production environment.
+2. Build the project
+ ```bash
+npm run production
+ ```
+Deploy the application to your hosting platform.
+
+## Contact
+> Email: sajibma@gmail.com
+> 
+> Project Link: https://github.com/musfekurRahman/blogger
