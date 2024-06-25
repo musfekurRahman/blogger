@@ -1,6 +1,6 @@
-# Laravel Blog Project
+# Blogger
 
-![License](https://img.shields.io/github/license/musfekurRahman/blogger)
+
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Issues](https://img.shields.io/github/issues/musfekurRahman/blogger)
 ![Forks](https://img.shields.io/github/forks/musfekurRahman/blogger)
