@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      args:
+        user: Blogger
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: blogger
+    container_name: Blogger
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    depends_on:
+          - db
+          - nginx
+    networks:
+      - blogger-network
+  db:
+    image: mysql:8.0
+    container_name: mysql8
+    restart: unless-stopped
+    hostname: mysql8
+    ports:
+        - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./docker-compose/mysql:/var/lib/mysql
+    networks:
+      - blogger-network
+  nginx:
+    image: nginx:alpine
+    container_name: Blogger-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - blogger-network
+networks:
+  blogger-network:
+    driver: bridge
