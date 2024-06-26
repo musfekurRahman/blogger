@@ -6,7 +6,7 @@
        $tableHeadCssClass="px-4 py-2 border-b-2 border-gray-200 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider";
        $tableBodyCssClass="px-4 py-2 border-b border-gray-200";
 
-       $firstItem=$contents->firstItem();
+       $firstItem = $contents->firstItem();
        $statusColor = ['DRAFT' => 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 text-sm rounded', 'PUBLISH' => 'bg-green-500 hover:bg-green-700 text-white py-1 px-2 text-sm rounded', 'PENDING'=>'bg-gray-500 hover:bg-gray-700 text-white py-1 px-2 text-sm rounded'];
 @endphp
 <x-app-layout>
@@ -68,12 +68,12 @@
                                     </td>
                                     <td class="{{ $tableBodyCssClass }}">
                                         @if(!UserService::isAdmin())
-                                        <a href="content/edit/{{ UtilsService::encrypt($content->id) }}"
-                                           target="_blank">
-                                            <button class="bg-gray-100 hover:bg-gray-200 py-1 px-2 text-sm rounded">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </a>
+                                            <a href="contents/edit/{{ UtilsService::encrypt($content->id) }}"
+                                               target="_blank">
+                                                <button class="bg-gray-100 hover:bg-gray-200 py-1 px-2 text-sm rounded">
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                </button>
+                                            </a>
                                         @endif
                                     </td>
                                 </tr>

@@ -17,4 +17,5 @@ interface ContentRepositoryInterface
     public function findWithCondition($conditionArray);
 
     public function findAllWithCondition($conditionArray);
+    public  function generateContentForCreate($contents);
 }

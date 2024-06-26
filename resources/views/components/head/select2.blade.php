@@ -6,6 +6,8 @@
     $(document).ready(function() {
         $('.tags').select2({
             tags: true,
+            minimumInputLength: 1,
+            maximumSelectionLength: 10,
             placeholder: "Select an option",
             allowClear: true,
             tokenSeparators: [',', ' ']

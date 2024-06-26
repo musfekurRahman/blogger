@@ -12,7 +12,6 @@ use Illuminate\View\View;
 
 class BlogController extends Controller
 {
-
     public function __construct(protected BloggerRepositoryInterface $bloggerRepository, protected ContentRepositoryInterface $contentRepository, protected CategoryRepositoryInterface $categoryRepository)
     {
     }

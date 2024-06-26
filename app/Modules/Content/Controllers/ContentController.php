@@ -34,6 +34,13 @@ class ContentController extends Controller
             'categories' => $categories,
         ]);
     }
+    public function edit(Request $request): view
+    {
+        $categories = $this->categoryRepository->allActive();
+        return view('content.edit',[
+            'categories' => $categories,
+        ]);
+    }
 
     /**
      * @throws Exception
@@ -42,12 +49,12 @@ class ContentController extends Controller
     {
         DB::beginTransaction();
         try {
-
             $contents = $request->validated();
             $category = $contents['categories'];
             $contents = $this->contentRepository->generateContentForCreate($contents);
             $this->contentRepository->create($contents);
             $this->categoryRepository->updateTotal($category);
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
