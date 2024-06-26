@@ -83,6 +83,6 @@ npm run production
 Deploy the application to your hosting platform.
 
 ## Contact
-> Email: sajibma@gmail.com
+> Email: **sajibma@gmail.com**
 > 
 > Project Link: https://github.com/musfekurRahman/blogger
