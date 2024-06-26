@@ -70,17 +70,18 @@ class BloggerRepository implements BloggerRepositoryInterface
         return $blogger->count();
     }
 
-    public function getBloggerId($slug, $id = '')
+    public function getBloggerId($slug, $userId = '')
     {
         $blogger = Bloggers::where([
             'slug' => $slug
         ]);
-        if (!empty($id)) {
-            $blogger->orWhere('user_id', $id);
+        if (!empty($userId)) {
+            $blogger->orWhere('user_id', $userId);
         }
         $blogger->select('id');
         return $blogger->first();
     }
+
     public function generateSlug(string $name): string
     {
         $name = str_replace(' ', '-', strtolower($name));
@@ -90,11 +91,21 @@ class BloggerRepository implements BloggerRepositoryInterface
         }
         return $name . '-' . UtilsService::generateRandomString(5);
     }
-    public function getBloggerIdByUserId($userId){
+
+    public function getBloggerIdByUserId($userId)
+    {
         $blogger = Bloggers::where([
             'user_id' => $userId
         ]);
         $blogger->select('id');
-        return $blogger->first()->id ;
+        return $blogger->first()->id;
+    }
+
+    public function getBloggerByUserId($userId)
+    {
+        $blogger = Bloggers::where([
+            'user_id' => $userId
+        ]);
+        return $blogger->first();
     }
 }

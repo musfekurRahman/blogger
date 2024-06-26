@@ -31,13 +31,19 @@ class UtilsService
 
     public static function getFormatedDate(string $date): string
     {
-        return date('M d,Y', strtotime($date));
+        return date('M d, Y', strtotime($date));
     }
 
     public static function getIdFromUrlPart($name): int|string
     {
         $explodeName = explode('-', $name);
-        return isset($explodeName[count($explodeName) - 1]) ? (integer)self::decrypt($explodeName[count($explodeName) - 1]) : '';
+        if (isset($explodeName[count($explodeName) - 1])) {
+            $encodedId = $explodeName[count($explodeName) - 1];
+            if (strlen($encodedId) > 100) {
+                return (integer)self::decrypt($encodedId);
+            }
+        }
+        return '';
     }
 
     public static function encrypt($data): string

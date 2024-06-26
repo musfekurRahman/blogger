@@ -1,9 +1,9 @@
 <?php
+
 use App\Modules\Blogger\Controllers\BlogController;
 use App\Modules\Blogger\Middleware\BlogSlugIsValid;
 use App\Modules\Category\Controllers\CategoryController;
 use App\Modules\Content\Controllers\ContentController;
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class, 'index']);
