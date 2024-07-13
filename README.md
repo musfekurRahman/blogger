@@ -45,10 +45,12 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-Ensure you have the following installed:
+Ensure you have the following installed (Without Docker):
 - [PHP](https://www.php.net/)
 - [Composer](https://getcomposer.org/)
 - [MySQL](https://www.mysql.com/)
+> __Note__:
+> Note: If you are using Docker No need to install these.
 
 ### Installation
 
@@ -57,7 +59,37 @@ Ensure you have the following installed:
    git clone https://github.com/musfekurRahman/blogger.git
    cd blogger
    ```
-
+2. **Run the project**
+   1. With Docker
+        ```bash 
+         docker compose up
+       ```
+   2. Without Docker
+      ```bash
+      php artisan serve
+      compser install
+       ```
+       
+3. **DB Migrate**
+    1. With Docker
+       ```bash 
+       docker exec -it blogger bash
+       php artisan migrate 
+       ```
+    2. Without Docker
+       ```bash
+        php artisan migrate
+       ```
+4. **DB Seed (Optional)**
+    1. With Docker
+       ```bash 
+       docker exec -it blogger bash
+       php artisan db:seed 
+       ```
+    2. Without Docker
+       ```bash
+        php artisan db:seed
+       ```
 ## Usage
 
 ### Writing Posts
@@ -78,7 +110,7 @@ To deploy the project, follow these steps:
 1. Ensure all environment variables are set up for the production environment.
 2. Build the project
  ```bash
-npm run production
+npm run prod
  ```
 Deploy the application to your hosting platform.
 
