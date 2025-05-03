@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Modules\User\Repositories\RegisterRepository;
+use App\Modules\User\Repositories\RegisterRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,9 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+    public function __construct(protected RegisterRepositoryInterface $registerRepository)
+    {
+    }
     /**
      * Display the registration view.
      */
@@ -35,7 +39,7 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        RegisterRepository::create([
+        $this->registerRepository->create([
             'blog_name' => $request->blog_name,
             'name' => $request->name,
             'email' => $request->email,
